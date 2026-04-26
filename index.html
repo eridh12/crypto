@@ -218,8 +218,8 @@
       .hero {
         min-height: calc(100vh - 92px);
         display: grid;
-        grid-template-columns: minmax(0, 1.05fr) minmax(390px, 470px);
-        gap: 42px;
+        grid-template-columns: minmax(0, 1fr) minmax(500px, 580px);
+        gap: 48px;
         align-items: center;
       }
 
@@ -330,43 +330,49 @@
       .hero-visual::before {
         content: "";
         position: absolute;
-        inset: -18px;
+        inset: -24px -18px;
         border-radius: 42px;
-        background: radial-gradient(circle at top, rgba(177, 63, 102, 0.14), transparent 55%);
-        filter: blur(12px);
+        background: radial-gradient(circle at 60% 24%, rgba(207, 143, 92, 0.12), transparent 44%);
+        filter: blur(14px);
         z-index: -1;
       }
 
       .hero-stack {
         position: relative;
-        padding: 18px;
-        border-radius: 34px;
-        background: linear-gradient(180deg, rgba(23, 14, 20, 0.82), rgba(18, 13, 18, 0.96));
-        border: 1px solid rgba(207, 143, 92, 0.18);
+        padding: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .hero-stack::before { content: none; }
+
+      .form-shell {
+        position: relative;
+        padding: 34px 34px 30px;
+        border-radius: 32px;
+        background: linear-gradient(180deg, rgba(32, 20, 28, 0.96), rgba(19, 13, 19, 0.98));
+        border: 1px solid rgba(207, 143, 92, 0.2);
         box-shadow: var(--shadow);
         overflow: hidden;
       }
 
-      .hero-stack::before {
+      .form-shell::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(145deg, rgba(255,255,255,0.04), transparent 38%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 30%);
         pointer-events: none;
       }
 
-      .form-shell {
-        padding: 28px;
-        border-radius: 28px;
-        background: rgba(27, 18, 25, 0.92);
-        border: 1px solid rgba(207, 143, 92, 0.16);
-      }
+      .form-shell > * { position: relative; z-index: 1; }
 
       .form-badge {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        padding: 8px 12px;
+        padding: 8px 14px;
         border-radius: 999px;
         background: rgba(207, 143, 92, 0.08);
         border: 1px solid rgba(207, 143, 92, 0.16);
@@ -377,27 +383,29 @@
       }
 
       .form-shell h2 {
-        margin: 18px 0 10px;
+        margin: 20px 0 12px;
         font-family: "Cormorant Garamond", serif;
-        font-size: 2.55rem;
+        font-size: 3rem;
         font-weight: 600;
+        line-height: 0.98;
       }
 
       .form-intro {
-        margin: 0 0 24px;
+        margin: 0 0 28px;
         color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.7;
+        font-size: 1.02rem;
+        line-height: 1.75;
+        max-width: 92%;
       }
 
       .case-form {
         display: grid;
-        gap: 18px;
+        gap: 22px;
       }
 
       .form-section {
         display: grid;
-        gap: 12px;
+        gap: 16px;
       }
 
       .form-section-title {
@@ -410,32 +418,41 @@
       .form-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        gap: 16px;
       }
 
       .field {
         display: grid;
-        gap: 8px;
+        gap: 9px;
       }
 
       .field label {
-        font-size: 0.95rem;
-        color: rgba(246, 239, 232, 0.92);
+        font-size: 0.96rem;
+        color: rgba(246, 239, 232, 0.94);
         font-weight: 600;
+      }
+
+      .field-note {
+        margin: 0;
+        font-size: 0.86rem;
+        line-height: 1.6;
+        color: rgba(246, 239, 232, 0.58);
       }
 
       .case-form input,
       .case-form textarea,
       .case-form select {
         width: 100%;
-        min-height: 56px;
-        padding: 16px 18px;
-        border-radius: 16px;
-        border: 1px solid rgba(207, 143, 92, 0.12);
+        min-height: 64px;
+        padding: 18px 20px;
+        border-radius: 17px;
+        border: 1px solid rgba(207, 143, 92, 0.14);
         background: rgba(13, 9, 13, 0.86);
         color: var(--text);
         outline: none;
-        transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+        font-size: 1rem;
+        line-height: 1.5;
+        transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
       }
 
       .case-form input:focus,
@@ -444,40 +461,41 @@
         border-color: rgba(239, 225, 210, 0.46);
         transform: translateY(-1px);
         box-shadow: 0 0 0 4px rgba(177, 63, 102, 0.1);
+        background: rgba(16, 11, 16, 0.95);
       }
 
       .case-form input::placeholder,
-      .case-form textarea::placeholder { color: #9f8f88; }
+      .case-form textarea::placeholder { color: #a79288; }
 
       .case-form textarea {
-        min-height: 156px;
+        min-height: 170px;
         resize: vertical;
       }
 
-      .form-helper-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .helper-card {
-        padding: 14px 16px;
+      .form-safety {
+        padding: 16px 18px;
         border-radius: 18px;
         background: rgba(255,255,255,0.03);
         border: 1px solid rgba(255,255,255,0.06);
       }
 
-      .helper-card strong {
+      .form-safety strong {
         display: block;
         margin-bottom: 6px;
         color: var(--text);
-        font-size: 0.94rem;
+        font-size: 0.95rem;
       }
 
-      .helper-card span {
+      .form-safety span {
+        display: block;
         color: var(--muted);
-        font-size: 0.88rem;
-        line-height: 1.55;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .case-form .button {
+        width: 100%;
+        margin-top: 2px;
       }
 
       .tiny-note {
@@ -867,9 +885,9 @@
       @media (max-width: 1080px) {
         .site-header { flex-wrap: wrap; justify-content: center; }
         .hero, .detail-panel { grid-template-columns: 1fr; }
-        .benefit-grid, .process-tabs, .hero-metrics, .form-helper-grid { grid-template-columns: 1fr; }
+        .benefit-grid, .process-tabs, .hero-metrics { grid-template-columns: 1fr; }
         .hero { min-height: auto; padding-top: 20px; }
-        .hero-stack { max-width: 640px; margin: 0 auto; }
+        .hero-stack { max-width: 720px; margin: 0 auto; }
       }
 
       @media (max-width: 780px) {
@@ -888,8 +906,14 @@
         .faq-answer p,
         .cta-panel p { font-size: 1rem; }
         .form-row { grid-template-columns: 1fr; }
-        .hero-stack, .form-shell, .feature-card, .cta-panel { padding-inline: 20px; }
-        .process-tab span, .faq-toggle, .detail-copy h3, .feature-card h3 { font-size: 1.35rem; }
+        .form-shell { padding: 24px 20px; }
+        .feature-card, .cta-panel { padding-inline: 20px; }
+        .form-shell h2,
+        .process-tab span,
+        .faq-toggle,
+        .detail-copy h3,
+        .feature-card h3 { font-size: 1.35rem; }
+        .form-intro { max-width: 100%; }
         .orb-stage { width: 180px; height: 180px; }
       }
     </style>
@@ -962,20 +986,20 @@
                 <div class="form-badge">Submit a Case Report</div>
                 <h2>Tell us what happened</h2>
                 <p class="form-intro">
-                  Share the key details of your case and your report can be reviewed to assess the most appropriate next steps.
+                  Share the essential facts of your case so the report can be reviewed and the most relevant next steps can be identified.
                 </p>
 
                 <form class="case-form">
                   <div class="form-section">
-                    <div class="form-section-title">Your details</div>
+                    <div class="form-section-title">Contact details</div>
                     <div class="form-row">
                       <div class="field">
                         <label for="firstName">First name</label>
-                        <input id="firstName" type="text" placeholder="Enter your first name" />
+                        <input id="firstName" type="text" placeholder="Your first name" />
                       </div>
                       <div class="field">
                         <label for="lastName">Last name</label>
-                        <input id="lastName" type="text" placeholder="Enter your last name" />
+                        <input id="lastName" type="text" placeholder="Your last name" />
                       </div>
                     </div>
                     <div class="form-row">
@@ -985,42 +1009,41 @@
                       </div>
                       <div class="field">
                         <label for="phone">Phone number</label>
-                        <input id="phone" type="tel" placeholder="Enter your phone number" />
+                        <input id="phone" type="tel" placeholder="Best number to reach you" />
                       </div>
                     </div>
                   </div>
 
                   <div class="form-section">
-                    <div class="form-section-title">Case information</div>
+                    <div class="form-section-title">Case details</div>
                     <div class="form-row">
                       <div class="field">
                         <label for="amount">Estimated amount lost</label>
-                        <input id="amount" type="text" placeholder="For example: $25,000" />
+                        <input id="amount" type="text" placeholder="e.g. $25,000" />
                       </div>
                       <div class="field">
                         <label for="assetType">Asset type</label>
-                        <input id="assetType" type="text" placeholder="BTC, ETH, USDT, mixed assets" />
+                        <input id="assetType" type="text" placeholder="e.g. BTC, ETH, USDT" />
                       </div>
                     </div>
                     <div class="field">
+                      <label for="platform">Platform or wallet involved</label>
+                      <input id="platform" type="text" placeholder="Exchange, wallet, or website name" />
+                    </div>
+                    <div class="field">
                       <label for="details">Incident summary</label>
-                      <textarea id="details" rows="6" placeholder="Describe what happened, when it happened, and which platform or wallet was involved"></textarea>
+                      <textarea id="details" rows="6" placeholder="Explain what happened, when it happened, and any transfers or platforms involved"></textarea>
+                      <p class="field-note">Useful details include dates, wallet addresses, transaction hashes, exchange names, and any messages or correspondence related to the incident.</p>
                     </div>
                   </div>
 
-                  <div class="form-helper-grid">
-                    <div class="helper-card">
-                      <strong>What to include</strong>
-                      <span>Dates, wallet addresses, exchange names, transaction hashes, and any correspondence you have.</span>
-                    </div>
-                    <div class="helper-card">
-                      <strong>What happens next</strong>
-                      <span>Your submission can be reviewed to determine the most relevant investigative starting point.</span>
-                    </div>
+                  <div class="form-safety">
+                    <strong>Before you submit</strong>
+                    <span>Do not include passwords, seed phrases, or authentication codes. Focus only on the facts needed to understand the case.</span>
                   </div>
 
                   <button class="button button-accent" type="submit">Begin confidential review</button>
-                  <p class="tiny-note">Only include information that is relevant to your case. Avoid sharing sensitive account credentials or seed phrases.</p>
+                  <p class="tiny-note">Each submission is reviewed individually to assess whether there is a useful investigative starting point.</p>
                 </form>
               </div>
             </div>
