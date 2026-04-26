@@ -3,152 +3,248 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aureline Recovery</title>
+    <title>Triangolo Crypto Recovery</title>
     <meta
       name="description"
-      content="Premium crypto recovery landing page."
+      content="Premium crypto recovery landing page for crypto.triangologastro.com."
     />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap");
+
       :root {
-        --bg: #090b10;
-        --bg-soft: #0f131b;
-        --panel: rgba(16, 21, 31, 0.84);
-        --panel-strong: rgba(14, 18, 27, 0.92);
-        --text: #f4efe6;
-        --muted: #a7a29a;
-        --gold: #c9aa6f;
-        --gold-bright: #e4c992;
-        --jade: #7eb6a7;
-        --line: rgba(255, 255, 255, 0.06);
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-        --radius-xl: 32px;
-        --radius-lg: 24px;
-        --radius-md: 18px;
+        --bg: #06070b;
+        --bg-2: #0b0f16;
+        --panel: rgba(12, 16, 24, 0.72);
+        --panel-strong: rgba(16, 20, 30, 0.94);
+        --line: rgba(255, 255, 255, 0.08);
+        --line-strong: rgba(215, 185, 120, 0.22);
+        --text: #f5f0e7;
+        --muted: #a59e93;
+        --soft: rgba(245, 240, 231, 0.3);
+        --gold: #c7a970;
+        --gold-bright: #ecd19d;
+        --teal: #89c6b7;
+        --shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+        --radius-xl: 34px;
+        --radius-lg: 26px;
+        --radius-md: 20px;
         --radius-sm: 14px;
-        --max-width: 1180px;
+        --max: 1200px;
       }
 
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
         margin: 0;
+        font-family: "Manrope", sans-serif;
         color: var(--text);
-        font-family: "Sora", "Avenir Next", "Segoe UI", sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(34, 54, 94, 0.22), transparent 34%),
-          radial-gradient(circle at 80% 22%, rgba(201, 170, 111, 0.12), transparent 20%),
-          linear-gradient(180deg, #090b10 0%, #0a0d12 100%);
+          radial-gradient(circle at 18% 10%, rgba(59, 88, 135, 0.18), transparent 28%),
+          radial-gradient(circle at 80% 20%, rgba(199, 169, 112, 0.14), transparent 20%),
+          radial-gradient(circle at 60% 80%, rgba(137, 198, 183, 0.1), transparent 20%),
+          linear-gradient(180deg, var(--bg) 0%, #090b11 100%);
+        overflow-x: hidden;
       }
 
       a { color: inherit; text-decoration: none; }
       button, input, textarea { font: inherit; }
       .sr-only {
-        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-        overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+        position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+        overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
       }
 
       .page-shell { position: relative; overflow: hidden; }
-      .ambient {
-        position: absolute; border-radius: 999px; filter: blur(90px); pointer-events: none;
-      }
-      .ambient-one {
-        top: 90px; left: -100px; width: 380px; height: 380px;
-        background: rgba(46, 87, 123, 0.12);
-      }
-      .ambient-two {
-        top: 580px; right: -130px; width: 320px; height: 320px;
-        background: rgba(201, 170, 111, 0.08);
-      }
-      .grid-overlay {
-        position: absolute; inset: 0;
-        background-image:
-          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-        background-size: 120px 120px;
-        mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), transparent 94%);
+      .ambient,
+      .ambient-grid,
+      .noise,
+      .spotlight {
+        position: fixed;
+        inset: 0;
         pointer-events: none;
       }
 
-      .site-header, main { position: relative; z-index: 1; }
+      .ambient::before,
+      .ambient::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(110px);
+      }
+
+      .ambient::before {
+        width: 34rem;
+        height: 34rem;
+        left: -8rem;
+        top: 4rem;
+        background: rgba(69, 98, 148, 0.18);
+        animation: drift 18s ease-in-out infinite alternate;
+      }
+
+      .ambient::after {
+        width: 28rem;
+        height: 28rem;
+        right: -6rem;
+        top: 18rem;
+        background: rgba(199, 169, 112, 0.12);
+        animation: drift 24s ease-in-out infinite alternate-reverse;
+      }
+
+      .ambient-grid {
+        background-image:
+          linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+        background-size: 110px 110px;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 95%);
+      }
+
+      .noise {
+        opacity: 0.08;
+        background-image: radial-gradient(rgba(255,255,255,0.9) 0.6px, transparent 0.6px);
+        background-size: 18px 18px;
+      }
+
+      .spotlight {
+        background: radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 20%), rgba(255,255,255,0.08), transparent 18%);
+        transition: background-position 120ms linear;
+      }
+
+      .site-header,
+      main {
+        position: relative;
+        z-index: 2;
+      }
+
       .site-header {
-        width: min(calc(100% - 48px), var(--max-width));
+        position: sticky;
+        top: 0;
+        width: min(calc(100% - 40px), var(--max));
         margin: 0 auto;
-        padding: 28px 0;
+        padding: 20px 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
+        backdrop-filter: blur(0px);
+        transition: padding 220ms ease, backdrop-filter 220ms ease;
+      }
+
+      .site-header.scrolled {
+        padding: 14px 0;
+        backdrop-filter: blur(14px);
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
-        font-weight: 600;
+        gap: 14px;
       }
+
       .brand-mark {
-        width: 36px; height: 36px; border-radius: 50%;
-        display: grid; place-items: center;
-        background: linear-gradient(135deg, rgba(201,170,111,0.25), rgba(126,182,167,0.15));
-        border: 1px solid rgba(201,170,111,0.25);
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(236, 209, 157, 0.22), rgba(137, 198, 183, 0.16));
+        border: 1px solid rgba(236, 209, 157, 0.24);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
         color: var(--gold-bright);
+        font-weight: 800;
       }
-      .brand-text {
-        font-size: 2rem;
-        text-transform: lowercase;
-        letter-spacing: 0.02em;
+
+      .brand-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .brand-domain {
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
       }
 
       .site-nav {
-        display: flex; gap: 42px;
-        font-size: 0.82rem; letter-spacing: 0.24em; text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
       }
-      .site-nav a { color: rgba(244, 239, 230, 0.86); }
+
+      .site-nav a {
+        color: rgba(245, 240, 231, 0.84);
+        transition: color 180ms ease;
+      }
+
+      .site-nav a:hover { color: var(--gold-bright); }
 
       .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: 10px;
         min-height: 56px;
         padding: 0 28px;
         border-radius: 16px;
         border: 1px solid transparent;
-        font-weight: 600;
-        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        font-weight: 700;
+        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
       }
-      .button:hover { transform: translateY(-1px); }
+
+      .button:hover { transform: translateY(-2px); }
+
       .button-gold {
-        background: linear-gradient(135deg, var(--gold), var(--gold-bright));
-        color: #17130d;
-        box-shadow: 0 18px 40px rgba(201,170,111,0.18);
+        color: #151109;
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+        box-shadow: 0 18px 42px rgba(199, 169, 112, 0.18);
       }
-      .button-ivory {
-        background: #f3efe8;
-        color: #17130d;
-      }
+
       .button-outline {
-        background: rgba(14,18,27,0.8);
-        border-color: rgba(201,170,111,0.24);
         color: var(--text);
+        border-color: rgba(199, 169, 112, 0.24);
+        background: rgba(14, 18, 27, 0.6);
       }
+
+      .button-light {
+        background: #f5f0e7;
+        color: #121014;
+      }
+
       .header-cta {
         min-height: 48px;
         padding-inline: 22px;
       }
 
       main {
-        width: min(calc(100% - 48px), var(--max-width));
+        width: min(calc(100% - 40px), var(--max));
         margin: 0 auto;
       }
 
-      section { padding: 34px 0 56px; }
+      section {
+        padding: 42px 0 76px;
+      }
 
       .hero {
+        min-height: calc(100vh - 92px);
         display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(360px, 430px);
-        gap: 42px;
+        grid-template-columns: minmax(0, 1.15fr) minmax(360px, 440px);
+        gap: 36px;
         align-items: center;
-        min-height: calc(100vh - 110px);
+      }
+
+      .hero-copy {
+        position: relative;
+        padding-right: 10px;
       }
 
       .eyebrow {
@@ -157,355 +253,642 @@
         gap: 14px;
         padding: 12px 18px;
         border-radius: 999px;
-        border: 1px solid rgba(201,170,111,0.18);
-        background: rgba(15,19,27,0.62);
-        color: var(--text);
-        margin-bottom: 28px;
+        border: 1px solid rgba(199, 169, 112, 0.18);
+        background: rgba(14, 18, 27, 0.55);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        color: var(--muted);
       }
-      .eyebrow strong { color: var(--gold); font-weight: 600; }
+
+      .eyebrow strong { color: var(--gold); }
       .eyebrow-divider {
-        width: 1px; height: 18px; background: rgba(255,255,255,0.14);
+        width: 1px;
+        height: 18px;
+        background: rgba(255, 255, 255, 0.14);
       }
 
-      h1, .section-heading h2, .cta-panel h2 {
+      .hero h1,
+      .section-heading h2,
+      .cta-panel h2 {
         margin: 0;
-        line-height: 0.95;
-        font-weight: 600;
-        letter-spacing: -0.04em;
+        line-height: 0.94;
+        letter-spacing: -0.05em;
       }
 
-      h1 {
-        max-width: 700px;
-        font-size: clamp(3.6rem, 7vw, 6.4rem);
+      .hero h1 {
+        margin-top: 26px;
+        max-width: 760px;
+        font-size: clamp(3.6rem, 7vw, 6.9rem);
+        font-weight: 800;
       }
-      .soft {
-        color: rgba(244,239,230,0.34);
+
+      .headline-soft,
+      .section-heading span,
+      .cta-panel h2 span {
+        color: var(--soft);
       }
-      h1::after {
+
+      .hero h1::after {
         content: "";
         display: block;
-        width: min(470px, 92%);
-        height: 14px;
-        margin-top: -2px;
+        width: min(520px, 96%);
+        height: 16px;
+        margin-top: -4px;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(126,182,167,0.72), rgba(201,170,111,0.95));
-        box-shadow: 0 12px 34px rgba(201,170,111,0.18);
+        background: linear-gradient(90deg, rgba(137, 198, 183, 0.8), rgba(199, 169, 112, 0.95));
+        box-shadow: 0 14px 34px rgba(199, 169, 112, 0.2);
+        animation: pulse-bar 4s ease-in-out infinite;
       }
 
       .hero-text,
       .section-heading p,
       .feature-card p,
-      .process-panel p,
+      .detail-panel p,
       .faq-answer p,
       .cta-panel p,
       .legal-copy,
       .site-footer p {
         color: var(--muted);
-        line-height: 1.65;
+        line-height: 1.75;
       }
 
       .hero-text {
-        max-width: 660px;
-        margin: 26px 0 34px;
-        font-size: 1.38rem;
+        max-width: 650px;
+        margin: 28px 0 36px;
+        font-size: 1.22rem;
       }
 
       .hero-actions {
         display: flex;
         align-items: center;
-        gap: 26px;
+        gap: 18px;
+        flex-wrap: wrap;
       }
+
       .text-link {
         display: inline-flex;
-        gap: 12px;
         align-items: center;
-        color: var(--text);
-        font-weight: 600;
+        gap: 10px;
+        font-weight: 700;
       }
 
       .hero-metrics {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        gap: 16px;
         margin-top: 42px;
       }
-      .hero-metrics article {
-        padding: 20px 22px;
-        border-radius: 20px;
-        background: rgba(13,17,25,0.72);
+
+      .metric-card {
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(11, 15, 22, 0.7);
         border: 1px solid rgba(255,255,255,0.06);
         box-shadow: var(--shadow);
       }
-      .hero-metrics strong {
+
+      .metric-card strong {
         display: block;
-        font-size: 1.08rem;
-      }
-      .hero-metrics span {
-        display: block;
-        margin-top: 8px;
-        color: var(--muted);
+        font-size: 1.2rem;
+        color: var(--text);
       }
 
-      .form-card { position: relative; }
-      .form-card::before {
+      .metric-card span {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.96rem;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .hero-visual::before {
         content: "";
         position: absolute;
-        inset: -14px;
-        border-radius: 46px;
-        background: radial-gradient(circle at top, rgba(201,170,111,0.14), transparent 52%);
-        filter: blur(8px);
+        inset: -18px;
+        border-radius: 42px;
+        background: radial-gradient(circle at top, rgba(199, 169, 112, 0.14), transparent 55%);
+        filter: blur(12px);
         z-index: -1;
       }
-      .form-card-inner {
-        padding: 34px;
-        border-radius: var(--radius-xl);
-        border: 1px solid rgba(201,170,111,0.2);
-        background:
-          linear-gradient(180deg, rgba(19,24,36,0.92), rgba(14,17,26,0.96)),
-          rgba(14,18,27,0.88);
+
+      .hero-stack {
+        position: relative;
+        padding: 26px;
+        border-radius: 34px;
+        background: linear-gradient(180deg, rgba(13, 17, 25, 0.82), rgba(12, 16, 24, 0.96));
+        border: 1px solid rgba(199, 169, 112, 0.18);
         box-shadow: var(--shadow);
+        overflow: hidden;
       }
-      .form-card h2 {
-        margin: 0 0 22px;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 500;
-        font-family: "Iowan Old Style", "Palatino Linotype", serif;
+
+      .hero-stack::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, rgba(255,255,255,0.04), transparent 38%);
+        pointer-events: none;
       }
-      .case-form { display: grid; gap: 14px; }
+
+      .glass-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .glass-chip {
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .glass-chip b {
+        display: block;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .trace-graph {
+        position: relative;
+        height: 140px;
+        margin: 18px 0 22px;
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.02), transparent),
+          rgba(7, 10, 15, 0.7);
+        border: 1px solid rgba(255,255,255,0.06);
+        overflow: hidden;
+      }
+
+      .trace-graph svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .trace-line {
+        stroke-dasharray: 520;
+        stroke-dashoffset: 520;
+        animation: draw-line 3.6s ease forwards 0.4s;
+      }
+
+      .trace-dot {
+        animation: pulse-dot 2.8s ease-in-out infinite;
+      }
+
+      .form-card-inner {
+        position: relative;
+        padding: 14px;
+        border-radius: 28px;
+        background: rgba(10, 13, 19, 0.6);
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .form-shell {
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(15, 20, 30, 0.88);
+        border: 1px solid rgba(199, 169, 112, 0.16);
+      }
+
+      .form-topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        gap: 12px;
+      }
+
+      .form-topline span {
+        color: var(--gold);
+        font-size: 0.76rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .form-shell h2 {
+        margin: 0;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.1rem;
+        font-weight: 600;
+      }
+
+      .case-form {
+        display: grid;
+        gap: 12px;
+      }
+
       .form-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
       }
+
       .case-form input,
       .case-form textarea {
         width: 100%;
-        padding: 16px 18px;
-        border-radius: var(--radius-sm);
-        border: 1px solid rgba(201,170,111,0.14);
-        background: rgba(17,22,33,0.86);
+        padding: 15px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(199, 169, 112, 0.12);
+        background: rgba(10, 13, 19, 0.82);
         color: var(--text);
         outline: none;
+        transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
       }
+
+      .case-form input:focus,
+      .case-form textarea:focus {
+        border-color: rgba(236, 209, 157, 0.54);
+        transform: translateY(-1px);
+        box-shadow: 0 0 0 4px rgba(199, 169, 112, 0.08);
+      }
+
       .case-form input::placeholder,
       .case-form textarea::placeholder {
-        color: #8b867e;
+        color: #8b8478;
       }
+
       .case-form textarea {
         resize: vertical;
-        min-height: 130px;
+        min-height: 126px;
       }
-      .button-submit { width: 100%; margin-top: 8px; }
+
+      .tiny-note {
+        margin: 10px 0 0;
+        font-size: 0.83rem;
+        color: rgba(245, 240, 231, 0.5);
+      }
 
       .section-heading {
-        max-width: 760px;
-        margin: 0 auto 44px;
+        max-width: 780px;
+        margin: 0 auto 42px;
         text-align: center;
       }
+
       .section-kicker {
-        margin: 0 0 14px;
+        margin: 0 0 16px;
         color: var(--gold);
-        letter-spacing: 0.22em;
-        font-size: 0.76rem;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
+        font-size: 0.78rem;
       }
+
       .section-heading h2 {
-        font-size: clamp(3rem, 6vw, 5.2rem);
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        font-weight: 800;
       }
+
       .section-heading p:last-child {
-        max-width: 720px;
+        max-width: 710px;
         margin: 20px auto 0;
-        font-size: 1.15rem;
+        font-size: 1.08rem;
       }
 
       .benefit-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
+        gap: 18px;
       }
+
       .feature-card {
-        padding: 34px 30px 36px;
-        border-radius: 26px;
-        border: 1px solid rgba(255,255,255,0.08);
-        background: rgba(16,21,31,0.82);
-        text-align: center;
+        position: relative;
+        padding: 30px 28px 34px;
+        border-radius: 28px;
+        background: rgba(13, 17, 25, 0.74);
+        border: 1px solid rgba(255,255,255,0.07);
         box-shadow: var(--shadow);
+        overflow: hidden;
       }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 35%);
+        opacity: 0;
+        transition: opacity 220ms ease;
+      }
+
+      .feature-card:hover::before { opacity: 1; }
+
       .feature-card-highlight {
-        border-color: rgba(201,170,111,0.45);
-        box-shadow: var(--shadow), inset 0 0 0 1px rgba(201,170,111,0.08);
+        border-color: rgba(199, 169, 112, 0.36);
       }
+
       .icon-wrap {
-        width: 56px; height: 56px; margin: 0 auto 20px;
-        border-radius: 16px; display: grid; place-items: center;
-        background: rgba(201,170,111,0.08); color: var(--gold-bright);
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: rgba(199, 169, 112, 0.08);
+        color: var(--gold-bright);
+        margin-bottom: 24px;
       }
-      .icon-wrap svg, .process-icon svg {
-        width: 28px; height: 28px; fill: none; stroke: currentColor;
-        stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+
+      .icon-wrap svg,
+      .step-icon svg {
+        width: 28px;
+        height: 28px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
+
       .feature-card h3 {
         margin: 0 0 14px;
-        font-size: 1.75rem;
-        font-weight: 500;
+        font-size: 1.55rem;
       }
-      .feature-card p { margin: 0; font-size: 1.1rem; }
 
-      .process-heading {
+      .feature-card p {
+        margin: 0;
+        font-size: 1.02rem;
+      }
+
+      .story-strip {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .story-card {
+        padding: 22px;
+        border-radius: 24px;
+        background: rgba(12, 16, 24, 0.68);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .story-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .story-stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .story-stat:last-child { border-bottom: 0; }
+      .story-stat strong { color: var(--gold-bright); }
+
+      .process .section-heading {
         margin-inline: 0;
         text-align: left;
       }
+
       .process-tabs {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 26px;
-        margin-bottom: 34px;
+        gap: 24px;
       }
+
       .process-tab {
-        padding: 20px 0 0;
-        background: transparent;
+        padding: 22px 0 0;
         border: 0;
-        border-top: 1px solid rgba(201,170,111,0.18);
+        border-top: 1px solid rgba(199, 169, 112, 0.22);
+        background: transparent;
         text-align: left;
         color: var(--muted);
         cursor: pointer;
+        transition: color 180ms ease, transform 180ms ease;
       }
+
+      .process-tab:hover { transform: translateY(-2px); }
+
       .process-tab span {
         display: block;
-        font-size: 1.9rem;
         margin-bottom: 8px;
+        font-size: 1.7rem;
       }
+
       .process-tab small {
         color: var(--gold);
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
+
       .process-tab.is-active { color: var(--text); }
 
-      .process-panel {
+      .detail-panel {
+        margin-top: 34px;
         display: grid;
-        grid-template-columns: minmax(0, 1.15fr) 300px;
-        gap: 34px;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 28px;
         align-items: center;
-        min-height: 460px;
-      }
-      .process-icon {
-        width: 48px; height: 48px; margin-bottom: 24px;
-        border-radius: 14px; display: grid; place-items: center;
-        background: rgba(201,170,111,0.08); color: var(--gold-bright);
-      }
-      .process-panel h3 {
-        margin: 0 0 18px;
-        font-size: 3rem;
-        font-weight: 500;
-      }
-      .process-panel p {
-        max-width: 690px;
-        font-size: 1.24rem;
-        margin: 0 0 20px;
       }
 
-      .process-emblem {
+      .detail-copy {
+        padding: 6px 0;
+      }
+
+      .step-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: rgba(199, 169, 112, 0.08);
+        color: var(--gold-bright);
+        margin-bottom: 20px;
+      }
+
+      .detail-copy h3 {
+        margin: 0 0 16px;
+        font-size: 2.8rem;
+      }
+
+      .detail-copy p {
+        max-width: 720px;
+        font-size: 1.14rem;
+        margin: 0 0 18px;
+      }
+
+      .orb-stage {
         position: relative;
-        width: 210px;
-        height: 210px;
+        width: 240px;
+        height: 240px;
         margin-inline: auto;
       }
-      .emblem-core {
-        position: absolute; inset: 0; border-radius: 50%;
-        background: radial-gradient(circle at 35% 30%, #ecd4a1, #c9aa6f 42%, #86663f 100%);
-        box-shadow: 0 20px 60px rgba(201,170,111,0.24), 0 0 0 18px rgba(201,170,111,0.05);
-      }
-      .emblem-plus, .emblem-plus::before {
-        position: absolute; background: #121014; border-radius: 999px;
-      }
-      .emblem-plus {
-        top: 50%; left: 50%; width: 96px; height: 18px; transform: translate(-50%, -50%);
-      }
-      .emblem-plus::before {
-        content: ""; width: 18px; height: 96px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+
+      .orb-ring,
+      .orb-core,
+      .orb-cross,
+      .orb-cross::before {
+        position: absolute;
+        border-radius: 999px;
       }
 
-      .faq-list { display: grid; gap: 14px; }
+      .orb-ring {
+        inset: 0;
+        border: 1px solid rgba(199, 169, 112, 0.18);
+        animation: rotate-slow 16s linear infinite;
+      }
+
+      .orb-ring::before,
+      .orb-ring::after {
+        content: "";
+        position: absolute;
+        inset: 22px;
+        border-radius: inherit;
+        border: 1px dashed rgba(255,255,255,0.08);
+      }
+
+      .orb-ring::after {
+        inset: 42px;
+      }
+
+      .orb-core {
+        inset: 56px;
+        background: radial-gradient(circle at 35% 30%, #f4ddb0, #cfab67 48%, #7a5c36 100%);
+        box-shadow: 0 20px 50px rgba(199, 169, 112, 0.24);
+        animation: float-core 5s ease-in-out infinite;
+      }
+
+      .orb-cross {
+        top: 50%;
+        left: 50%;
+        width: 80px;
+        height: 16px;
+        background: #120f11;
+        transform: translate(-50%, -50%);
+      }
+
+      .orb-cross::before {
+        content: "";
+        width: 16px;
+        height: 80px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #120f11;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 14px;
+      }
+
       .faq-item {
-        border-radius: 22px;
-        border: 1px solid rgba(255,255,255,0.04);
-        background: rgba(15,20,30,0.55);
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,0.05);
+        background: rgba(12, 16, 24, 0.55);
         overflow: hidden;
       }
+
       .faq-item.is-open {
-        background: rgba(17,22,33,0.86);
-        border-color: rgba(201,170,111,0.15);
+        background: rgba(15, 20, 30, 0.88);
+        border-color: rgba(199, 169, 112, 0.16);
       }
+
       .faq-toggle {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
-        padding: 28px 26px;
+        padding: 26px 24px;
         border: 0;
         background: transparent;
-        text-align: left;
         color: var(--text);
+        text-align: left;
         cursor: pointer;
-        font-size: 1.45rem;
+        font-size: 1.34rem;
+        font-weight: 600;
       }
+
       .faq-symbol {
         color: var(--gold);
         font-size: 2rem;
         line-height: 1;
       }
+
       .faq-answer {
         display: grid;
         grid-template-rows: 0fr;
-        transition: grid-template-rows 220ms ease;
+        transition: grid-template-rows 240ms ease;
       }
+
       .faq-answer p {
         overflow: hidden;
         margin: 0;
-        padding: 0 26px 0;
-        font-size: 1.15rem;
+        padding: 0 24px 0;
+        font-size: 1.06rem;
       }
-      .faq-item.is-open .faq-answer { grid-template-rows: 1fr; }
-      .faq-item.is-open .faq-answer p { padding-bottom: 26px; }
+
+      .faq-item.is-open .faq-answer {
+        grid-template-rows: 1fr;
+      }
+
+      .faq-item.is-open .faq-answer p {
+        padding-bottom: 24px;
+      }
 
       .cta-panel {
-        padding: 68px 32px;
-        border-radius: 32px;
-        border: 1px solid rgba(201,170,111,0.18);
+        position: relative;
+        overflow: hidden;
+        padding: 70px 32px;
+        border-radius: 34px;
+        border: 1px solid rgba(199, 169, 112, 0.18);
         background:
-          linear-gradient(180deg, rgba(23,18,14,0.58), rgba(18,17,21,0.88)),
-          rgba(15,20,30,0.86);
+          linear-gradient(180deg, rgba(20, 18, 14, 0.62), rgba(14, 17, 24, 0.92)),
+          rgba(14, 17, 24, 0.88);
         text-align: center;
         box-shadow: var(--shadow);
       }
-      .cta-panel h2 {
-        max-width: 900px;
-        margin: 0 auto;
-        font-size: clamp(2.9rem, 5vw, 4.8rem);
+
+      .cta-panel::before {
+        content: "";
+        position: absolute;
+        inset: -30% auto auto -10%;
+        width: 44%;
+        height: 180%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+        transform: rotate(18deg);
+        animation: shine 10s linear infinite;
       }
+
+      .cta-panel h2 {
+        max-width: 920px;
+        margin: 0 auto;
+        font-size: clamp(3rem, 5vw, 5rem);
+        font-weight: 800;
+      }
+
       .cta-panel p {
-        max-width: 700px;
-        margin: 24px auto 34px;
-        font-size: 1.2rem;
+        max-width: 720px;
+        margin: 24px auto 32px;
+        font-size: 1.12rem;
       }
 
       .site-footer {
-        padding: 42px 0 18px;
+        padding: 40px 0 20px;
         text-align: center;
       }
+
       .legal-copy {
-        max-width: 980px;
-        margin: 0 auto 30px;
-        font-size: 0.96rem;
+        max-width: 940px;
+        margin: 0 auto 28px;
+        font-size: 0.94rem;
       }
+
       .footer-divider {
         height: 1px;
-        margin-bottom: 30px;
-        background: linear-gradient(90deg, transparent, rgba(201,170,111,0.34), transparent);
+        margin-bottom: 28px;
+        background: linear-gradient(90deg, transparent, rgba(199, 169, 112, 0.34), transparent);
       }
-      .site-footer p { margin: 10px 0; font-size: 1rem; }
+
+      .site-footer p {
+        margin: 10px 0;
+      }
+
       .footer-links {
         display: inline-flex;
         align-items: center;
@@ -514,76 +897,183 @@
         color: var(--gold);
       }
 
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(34px) scale(0.985);
+        transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1);
+        transition-delay: var(--delay, 0ms);
+      }
+
+      [data-reveal].in-view {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      [data-reveal="left"] {
+        transform: translateX(-42px);
+      }
+
+      [data-reveal="right"] {
+        transform: translateX(42px);
+      }
+
+      [data-reveal="zoom"] {
+        transform: scale(0.92);
+      }
+
+      [data-reveal="left"].in-view,
+      [data-reveal="right"].in-view,
+      [data-reveal="zoom"].in-view {
+        transform: translate(0, 0) scale(1);
+      }
+
+      @keyframes drift {
+        from { transform: translate3d(0, 0, 0) scale(1); }
+        to { transform: translate3d(3rem, 2rem, 0) scale(1.08); }
+      }
+
+      @keyframes pulse-bar {
+        0%, 100% { transform: scaleX(0.98); opacity: 0.88; }
+        50% { transform: scaleX(1.02); opacity: 1; }
+      }
+
+      @keyframes draw-line {
+        to { stroke-dashoffset: 0; }
+      }
+
+      @keyframes pulse-dot {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.16); opacity: 1; }
+      }
+
+      @keyframes rotate-slow {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes float-core {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      @keyframes shine {
+        from { transform: translateX(-20%) rotate(18deg); }
+        to { transform: translateX(250%) rotate(18deg); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+        [data-reveal] {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
       @media (max-width: 1080px) {
         .site-header {
           flex-wrap: wrap;
           justify-content: center;
         }
-        .hero {
+
+        .hero,
+        .story-strip,
+        .detail-panel {
           grid-template-columns: 1fr;
-          min-height: auto;
-          padding-top: 20px;
         }
-        .form-card {
-          max-width: 680px;
-          width: 100%;
-          margin: 0 auto;
-        }
+
         .benefit-grid,
         .process-tabs,
-        .process-panel,
         .hero-metrics {
           grid-template-columns: 1fr;
         }
-        .process-emblem {
-          width: 170px;
-          height: 170px;
-          margin-top: 14px;
+
+        .hero {
+          min-height: auto;
+          padding-top: 20px;
+        }
+
+        .hero-stack {
+          max-width: 620px;
+          margin: 0 auto;
         }
       }
 
       @media (max-width: 780px) {
-        .site-header, main { width: min(calc(100% - 28px), var(--max-width)); }
+        .site-header,
+        main {
+          width: min(calc(100% - 26px), var(--max));
+        }
+
         .site-nav {
-          gap: 18px;
           flex-wrap: wrap;
           justify-content: center;
+          gap: 18px;
           letter-spacing: 0.16em;
         }
-        .brand-text { font-size: 1.6rem; }
-        h1 { font-size: clamp(2.9rem, 15vw, 4.6rem); }
+
+        .brand-domain {
+          letter-spacing: 0.12em;
+        }
+
+        .hero h1 {
+          font-size: clamp(3rem, 16vw, 4.9rem);
+        }
+
         .hero-text,
         .section-heading p:last-child,
         .feature-card p,
-        .process-panel p,
+        .detail-copy p,
         .faq-answer p,
-        .cta-panel p { font-size: 1rem; }
-        .hero-actions, .footer-links {
-          flex-wrap: wrap;
-          justify-content: center;
+        .cta-panel p {
+          font-size: 1rem;
         }
-        .form-row { grid-template-columns: 1fr; }
-        .feature-card, .cta-panel { padding-inline: 22px; }
-        .process-tab span, .feature-card h3, .faq-toggle { font-size: 1.35rem; }
-        .process-panel h3 { font-size: 2.3rem; }
-        .cta-panel { padding-block: 48px; }
+
+        .form-row,
+        .glass-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-card,
+        .cta-panel,
+        .hero-stack {
+          padding-inline: 20px;
+        }
+
+        .process-tab span,
+        .faq-toggle,
+        .detail-copy h3,
+        .feature-card h3 {
+          font-size: 1.35rem;
+        }
+
+        .orb-stage {
+          width: 180px;
+          height: 180px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="page-shell">
-      <div class="ambient ambient-one"></div>
-      <div class="ambient ambient-two"></div>
-      <div class="grid-overlay"></div>
+      <div class="ambient"></div>
+      <div class="ambient-grid"></div>
+      <div class="noise"></div>
+      <div class="spotlight"></div>
 
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="Aureline Recovery home">
-          <span class="brand-mark">A</span>
-          <span class="brand-text">aureline</span>
+      <header class="site-header" id="header">
+        <a class="brand" href="#top" aria-label="Triangolo Crypto home">
+          <span class="brand-mark">T</span>
+          <span class="brand-stack">
+            <span class="brand-name">Triangolo Crypto</span>
+            <span class="brand-domain">crypto.triangologastro.com</span>
+          </span>
         </a>
 
         <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#about">About Aureline</a>
+          <a href="#about">About</a>
           <a href="#process">How It Works</a>
           <a href="#faq">FAQs</a>
         </nav>
@@ -593,140 +1083,198 @@
 
       <main id="top">
         <section class="hero">
-          <div class="hero-copy">
+          <div class="hero-copy" data-reveal="left">
             <div class="eyebrow">
-              <strong>Powered by LedgerTrace</strong>
+              <strong>Private recovery desk</strong>
               <span class="eyebrow-divider"></span>
-              <span>Private digital asset intelligence</span>
+              <span>Trusted digital asset intelligence</span>
             </div>
 
             <h1>
-              The world’s
-              <span class="soft">trusted name in</span>
-              crypto recovery.
+              Precision-led
+              <span class="headline-soft">crypto recovery for</span>
+              complex cases.
             </h1>
 
             <p class="hero-text">
-              With over 10 years of proven results, millions already reclaimed, and a discreet client-first approach, Aureline helps stolen or stranded digital assets find their way home.
+              Triangolo Crypto blends forensic tracing, discreet client handling, and premium case presentation to help victims of wallet compromise, fraudulent platforms, and cross-chain theft move forward with clarity.
             </p>
 
             <div class="hero-actions">
-              <a class="button button-ivory" href="#contact">Start Your Recovery</a>
-              <a class="text-link" href="#process">
-                <span>See how it works</span>
-                <span aria-hidden="true">›</span>
-              </a>
+              <a class="button button-light" href="#contact">Start Your Recovery</a>
+              <a class="button button-outline" href="#process">See the process</a>
             </div>
 
             <div class="hero-metrics">
-              <article>
+              <article class="metric-card" data-reveal style="--delay: 80ms">
                 <strong>10+ years</strong>
-                <span>specialist investigations</span>
+                <span>investigative experience</span>
               </article>
-              <article>
+              <article class="metric-card" data-reveal style="--delay: 160ms">
                 <strong>120+ chains</strong>
-                <span>cross-network tracing</span>
+                <span>cross-network visibility</span>
               </article>
-              <article>
-                <strong>Global</strong>
-                <span>case coordination</span>
+              <article class="metric-card" data-reveal style="--delay: 240ms">
+                <strong>Private</strong>
+                <span>case-by-case engagement</span>
               </article>
             </div>
           </div>
 
-          <aside class="form-card" id="contact">
-            <div class="form-card-inner">
-              <h2>Submit a Case Report</h2>
-              <form class="case-form">
-                <div class="form-row">
-                  <label>
-                    <span class="sr-only">First Name</span>
-                    <input type="text" placeholder="First Name" />
-                  </label>
-                  <label>
-                    <span class="sr-only">Last Name</span>
-                    <input type="text" placeholder="Last Name" />
-                  </label>
+          <div class="hero-visual" data-reveal="right">
+            <div class="hero-stack" id="parallax-card">
+              <div class="glass-stats">
+                <div class="glass-chip">
+                  <b>Case signal</b>
+                  <span>High confidence trace path detected</span>
                 </div>
-
-                <label>
-                  <span class="sr-only">Email Address</span>
-                  <input type="email" placeholder="Email Address" />
-                </label>
-
-                <label>
-                  <span class="sr-only">Phone Number</span>
-                  <input type="tel" placeholder="+44 0000 000000" />
-                </label>
-
-                <div class="form-row">
-                  <label>
-                    <span class="sr-only">Amount Stolen</span>
-                    <input type="text" placeholder="Amount Stolen ($)" />
-                  </label>
-                  <label>
-                    <span class="sr-only">Asset Type</span>
-                    <input type="text" placeholder="Asset Type" />
-                  </label>
+                <div class="glass-chip">
+                  <b>Jurisdiction</b>
+                  <span>UK-led intake with global reach</span>
                 </div>
+              </div>
 
-                <label>
-                  <span class="sr-only">Incident Details</span>
-                  <textarea rows="5" placeholder="Let us know what happened"></textarea>
-                </label>
+              <div class="trace-graph" aria-hidden="true">
+                <svg viewBox="0 0 420 160" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="traceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#89c6b7" />
+                      <stop offset="100%" stop-color="#ecd19d" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 106 C50 100, 78 118, 116 94 S192 40, 234 70 S296 134, 354 82 S398 36, 420 48" fill="none" stroke="url(#traceGradient)" stroke-width="4" class="trace-line" />
+                  <circle cx="116" cy="94" r="5" fill="#ecd19d" class="trace-dot" />
+                  <circle cx="234" cy="70" r="5" fill="#89c6b7" class="trace-dot" style="animation-delay: .4s" />
+                  <circle cx="354" cy="82" r="5" fill="#ecd19d" class="trace-dot" style="animation-delay: .8s" />
+                </svg>
+              </div>
 
-                <button class="button button-gold button-submit" type="submit">Submit</button>
-              </form>
+              <div class="form-card-inner" id="contact">
+                <div class="form-shell">
+                  <div class="form-topline">
+                    <span>Confidential intake</span>
+                    <span>Response-led</span>
+                  </div>
+                  <h2>Submit a Case Report</h2>
+
+                  <form class="case-form">
+                    <div class="form-row">
+                      <label>
+                        <span class="sr-only">First Name</span>
+                        <input type="text" placeholder="First Name" />
+                      </label>
+                      <label>
+                        <span class="sr-only">Last Name</span>
+                        <input type="text" placeholder="Last Name" />
+                      </label>
+                    </div>
+
+                    <label>
+                      <span class="sr-only">Email Address</span>
+                      <input type="email" placeholder="Email Address" />
+                    </label>
+
+                    <label>
+                      <span class="sr-only">Phone Number</span>
+                      <input type="tel" placeholder="Phone Number" />
+                    </label>
+
+                    <div class="form-row">
+                      <label>
+                        <span class="sr-only">Amount Lost</span>
+                        <input type="text" placeholder="Amount Lost ($)" />
+                      </label>
+                      <label>
+                        <span class="sr-only">Asset Type</span>
+                        <input type="text" placeholder="Asset Type" />
+                      </label>
+                    </div>
+
+                    <label>
+                      <span class="sr-only">Incident Details</span>
+                      <textarea rows="5" placeholder="Tell us what happened"></textarea>
+                    </label>
+
+                    <button class="button button-gold" type="submit">Begin Review</button>
+                  </form>
+
+                  <p class="tiny-note">Every submission is reviewed discreetly and handled with a tailored response path.</p>
+                </div>
+              </div>
             </div>
-          </aside>
+          </div>
         </section>
 
         <section id="about">
-          <div class="section-heading">
-            <p class="section-kicker">Your recovery partner</p>
+          <div class="section-heading" data-reveal>
+            <p class="section-kicker">Premium recovery experience</p>
             <h2>
-              All your crypto recovery needs in
-              <span class="soft">one trusted place.</span>
+              Built for clients who need
+              <span>clarity, discretion, and momentum.</span>
             </h2>
             <p>
-              We combine technical expertise, human discretion, and clear guidance to make a difficult situation feel structured, secure, and manageable.
+              This isn’t a generic lead page. It is designed to feel deliberate, intelligent, and composed from the first scroll, mirroring the seriousness of the cases it represents.
             </p>
           </div>
 
           <div class="benefit-grid">
-            <article class="feature-card">
+            <article class="feature-card" data-reveal style="--delay: 0ms">
               <div class="icon-wrap">
                 <svg viewBox="0 0 24 24"><path d="M4 7.5h16M6 4.5h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Zm4 14h4"/></svg>
               </div>
-              <h3>Discreet Case Intake</h3>
-              <p>A polished intake flow that gathers the essentials quickly, then hands your case to a specialist without unnecessary friction.</p>
+              <h3>Structured Intake</h3>
+              <p>Fast capture of the facts that matter, with a tone that feels calm and premium rather than urgent and noisy.</p>
             </article>
 
-            <article class="feature-card feature-card-highlight">
+            <article class="feature-card feature-card-highlight" data-reveal style="--delay: 120ms">
               <div class="icon-wrap">
                 <svg viewBox="0 0 24 24"><path d="M7 8h10l-1 11H8L7 8Zm2-3h6l1 3H8l1-3Zm2 6v4m2-4v4"/></svg>
               </div>
-              <h3>Specialist Investigations</h3>
-              <p>Our investigators trace activity across exchanges, bridges, and wallet clusters to surface practical next steps for recovery.</p>
+              <h3>Tracing Depth</h3>
+              <p>Cross-wallet movement, exchange exposure, and chain-level clues surfaced in a way that feels rigorous and high trust.</p>
             </article>
 
-            <article class="feature-card">
+            <article class="feature-card" data-reveal style="--delay: 240ms">
               <div class="icon-wrap">
                 <svg viewBox="0 0 24 24"><path d="M5 18h14M7 16V9m5 7V6m5 10v-4"/></svg>
               </div>
               <h3>Transparent Guidance</h3>
-              <p>Clear milestones, realistic expectations, and concise communication so you always understand where your case stands.</p>
+              <p>Premium clients expect signal over spin. The design and the copy both reflect that standard.</p>
             </article>
+          </div>
+
+          <div class="story-strip">
+            <div class="story-card" data-reveal="left">
+              <h3>Why this version feels stronger</h3>
+              <p>The original reference relies on a fairly standard dark theme with bright pink accents. This version shifts toward obsidian, champagne, and sea-glass tones, which reads more expensive and less promotional while still feeling modern.</p>
+            </div>
+            <div class="story-card" data-reveal="right">
+              <div class="story-stat">
+                <span>Visual direction</span>
+                <strong>Luxury forensic</strong>
+              </div>
+              <div class="story-stat">
+                <span>Animation language</span>
+                <strong>Slow, precise, layered</strong>
+              </div>
+              <div class="story-stat">
+                <span>Brand surface</span>
+                <strong>crypto.triangologastro.com</strong>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section id="process">
-          <div class="section-heading process-heading">
-            <p class="section-kicker">Three steps</p>
-            <h2>Our process, <span class="soft">refined.</span></h2>
+        <section class="process" id="process">
+          <div class="section-heading" data-reveal="left">
+            <p class="section-kicker">Three-stage approach</p>
+            <h2>
+              Our process,
+              <span>distilled.</span>
+            </h2>
           </div>
 
-          <div class="process-tabs" role="tablist" aria-label="Recovery process">
+          <div class="process-tabs" role="tablist" aria-label="Recovery process" data-reveal>
             <button class="process-tab is-active" type="button" data-step="0">
               <span>Case Submission</span>
               <small>Step 1</small>
@@ -741,117 +1289,97 @@
             </button>
           </div>
 
-          <div class="process-panel">
-            <div class="process-panel-copy">
-              <div class="process-icon" aria-hidden="true">
+          <div class="detail-panel">
+            <div class="detail-copy" data-reveal="left">
+              <div class="step-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" id="process-icon"><path d="m4 20 5-1 10-10-4-4L5 15l-1 5Zm9-13 4 4"/></svg>
               </div>
               <h3 id="process-title">Case Submission</h3>
-              <p id="process-body-one">
-                It starts with your story. Once your report is submitted, we capture the critical details needed to understand what happened, what assets were affected, and which counterparties may be relevant.
-              </p>
-              <p id="process-body-two">
-                That foundation helps us shape a clear response plan from the outset, reducing noise and giving our investigators a stronger starting point.
-              </p>
+              <p id="process-body-one">Every strong recovery effort starts with a clean factual base. We gather wallet details, asset types, platform touchpoints, and incident context in a way that reduces noise and improves investigative precision.</p>
+              <p id="process-body-two">This design mirrors that philosophy by turning the journey into a clear, premium sequence instead of a cluttered funnel.</p>
               <a class="button button-outline" href="#contact">Start your recovery</a>
             </div>
 
-            <div class="process-emblem" aria-hidden="true">
-              <div class="emblem-core"></div>
-              <div class="emblem-plus"></div>
+            <div class="orb-stage" data-reveal="zoom">
+              <div class="orb-ring"></div>
+              <div class="orb-core"></div>
+              <div class="orb-cross"></div>
             </div>
           </div>
         </section>
 
         <section id="faq">
-          <div class="section-heading">
+          <div class="section-heading" data-reveal>
             <p class="section-kicker">FAQ</p>
-            <h2>Common questions, <span class="soft">answered.</span></h2>
+            <h2>
+              Common questions,
+              <span>beautifully resolved.</span>
+            </h2>
           </div>
 
           <div class="faq-list">
-            <article class="faq-item is-open">
+            <article class="faq-item is-open" data-reveal>
               <button class="faq-toggle" type="button" aria-expanded="true">
                 <span>Can lost or stolen cryptocurrency really be recovered?</span>
                 <span class="faq-symbol">−</span>
               </button>
               <div class="faq-answer">
-                <p>In many cases, yes. Using proprietary tracing methods and an experienced investigative workflow, we follow asset movement across wallets, exchanges, and hidden routes to identify realistic recovery paths.</p>
+                <p>In many cases, yes. Recovery depends on how the funds moved, which platforms touched the assets, and whether meaningful trace points remain. The goal is to identify realistic leverage rather than make blanket promises.</p>
               </div>
             </article>
 
-            <article class="faq-item">
+            <article class="faq-item" data-reveal style="--delay: 80ms">
               <button class="faq-toggle" type="button" aria-expanded="false">
                 <span>How long does the recovery process take?</span>
                 <span class="faq-symbol">+</span>
               </button>
               <div class="faq-answer">
-                <p>Timelines depend on the complexity of the incident, the chains involved, and the responsiveness of third parties. Simple tracing can begin quickly, while complex cases may take several weeks.</p>
+                <p>Some traces can be scoped quickly, while multi-platform or cross-chain incidents may take longer. The right expectation is a staged process with clearer signal over time, not an instant answer.</p>
               </div>
             </article>
 
-            <article class="faq-item">
+            <article class="faq-item" data-reveal style="--delay: 120ms">
               <button class="faq-toggle" type="button" aria-expanded="false">
-                <span>What types of crypto scams do you handle?</span>
+                <span>What kinds of cases does Triangolo Crypto handle?</span>
                 <span class="faq-symbol">+</span>
               </button>
               <div class="faq-answer">
-                <p>We support cases involving phishing, wallet compromise, social engineering, fraudulent trading platforms, fake investment schemes, and unauthorised transfers.</p>
+                <p>Wallet compromise, fraudulent exchanges, fake investment platforms, phishing, social engineering, and suspicious transfer chains are all common categories for review.</p>
               </div>
             </article>
 
-            <article class="faq-item">
+            <article class="faq-item" data-reveal style="--delay: 160ms">
               <button class="faq-toggle" type="button" aria-expanded="false">
-                <span>Is my personal information safe with Aureline?</span>
+                <span>Will my information stay confidential?</span>
                 <span class="faq-symbol">+</span>
               </button>
               <div class="faq-answer">
-                <p>Yes. We treat every submission with discretion, use limited-access handling processes, and only request information that supports case assessment and progression.</p>
-              </div>
-            </article>
-
-            <article class="faq-item">
-              <button class="faq-toggle" type="button" aria-expanded="false">
-                <span>What does the recovery process involve?</span>
-                <span class="faq-symbol">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Most engagements move through case intake, transaction tracing, evidence review, strategy development, and third-party coordination where applicable.</p>
-              </div>
-            </article>
-
-            <article class="faq-item">
-              <button class="faq-toggle" type="button" aria-expanded="false">
-                <span>How much does it cost to recover my funds?</span>
-                <span class="faq-symbol">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Fees vary by case profile and investigative depth. After the initial review, we outline the likely scope and commercial structure before substantive work begins.</p>
+                <p>Yes. The brand direction and case flow are both designed around discretion. Sensitive details should only be handled where they are genuinely relevant to review and escalation.</p>
               </div>
             </article>
           </div>
         </section>
 
         <section>
-          <div class="cta-panel">
+          <div class="cta-panel" data-reveal>
             <p class="section-kicker">Confidential support</p>
             <h2>
               Ready to begin your recovery?
-              <span class="soft">Start your case today.</span>
+              <span>Start your case with confidence.</span>
             </h2>
             <p>
-              Take the first step towards reclaiming what’s yours. Our specialists are here to listen, understand your situation, and guide you forward with discretion.
+              This updated version turns the site into a stronger brand surface for `crypto.triangologastro.com`, with motion and visual polish that feel measured, premium, and trustworthy.
             </p>
-            <a class="button button-gold" href="#contact">Start your recovery</a>
+            <a class="button button-gold" href="#contact">Open your case</a>
           </div>
 
-          <footer class="site-footer">
+          <footer class="site-footer" data-reveal>
             <p class="legal-copy">
               Information provided on this website is for general informational purposes only and does not constitute legal, financial, or investment advice. Recovery outcomes vary by circumstance and cannot be guaranteed.
             </p>
             <div class="footer-divider"></div>
-            <p>Copyright © 2015-2026 Aureline Recovery. All rights reserved.</p>
-            <p>1 Guinness Court, Mansell Street, Aldgate, London E1 8AB</p>
+            <p>Copyright © 2015-2026 Triangolo Crypto. All rights reserved.</p>
+            <p>crypto.triangologastro.com</p>
             <div class="footer-links">
               <a href="#top">Privacy Policy</a>
               <span>•</span>
@@ -867,34 +1395,34 @@
         {
           title: "Case Submission",
           icon: '<path d="m4 20 5-1 10-10-4-4L5 15l-1 5Zm9-13 4 4"/>',
-          bodyOne: "It starts with your story. Once your report is submitted, we capture the critical details needed to understand what happened, what assets were affected, and which counterparties may be relevant.",
-          bodyTwo: "That foundation helps us shape a clear response plan from the outset, reducing noise and giving our investigators a stronger starting point."
+          bodyOne: "Every strong recovery effort starts with a clean factual base. We gather wallet details, asset types, platform touchpoints, and incident context in a way that reduces noise and improves investigative precision.",
+          bodyTwo: "This design mirrors that philosophy by turning the journey into a clear, premium sequence instead of a cluttered funnel."
         },
         {
           title: "Investigation & Tracing",
           icon: '<path d="M4 12h5l2-5 3 10 2-5h4"/>',
-          bodyOne: "Our team maps transaction flows, wallet relationships, and platform touchpoints to build an evidence-led picture of where the assets moved and how the incident unfolded.",
-          bodyTwo: "This stage is designed to surface concrete leverage points, whether that means exchange engagement, documented escalation, or a stronger recovery dossier."
+          bodyOne: "Once the case is scoped, tracing begins across wallets, bridges, exchanges, and visible interaction patterns. The goal is to separate noise from signal and build a more usable evidentiary picture.",
+          bodyTwo: "The new motion system reinforces that sense of progression as the page unfolds with deliberate, layered reveals."
         },
         {
           title: "Recovery Strategy",
           icon: '<path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/>',
-          bodyOne: "Once tracing is complete, we translate the findings into a practical strategy tailored to your case, including communication pathways, recovery priorities, and likely next actions.",
-          bodyTwo: "You stay informed throughout, with clear explanations of what is possible, what depends on third parties, and what the next milestone looks like."
+          bodyOne: "The final phase turns findings into action: documented next steps, practical escalation routes, and a clearer view of what may realistically be recovered or pursued.",
+          bodyTwo: "Premium presentation matters here because trust is shaped as much by clarity and restraint as it is by technical depth."
         }
       ];
 
-      const processTabs = Array.from(document.querySelectorAll(".process-tab"));
-      const processTitle = document.getElementById("process-title");
-      const processBodyOne = document.getElementById("process-body-one");
-      const processBodyTwo = document.getElementById("process-body-two");
-      const processIcon = document.getElementById("process-icon");
+      const processTabs = Array.from(document.querySelectorAll('.process-tab'));
+      const processTitle = document.getElementById('process-title');
+      const processBodyOne = document.getElementById('process-body-one');
+      const processBodyTwo = document.getElementById('process-body-two');
+      const processIcon = document.getElementById('process-icon');
 
       processTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
+        tab.addEventListener('click', () => {
           const nextStep = processSteps[Number(tab.dataset.step)];
-          processTabs.forEach((item) => item.classList.remove("is-active"));
-          tab.classList.add("is-active");
+          processTabs.forEach((item) => item.classList.remove('is-active'));
+          tab.classList.add('is-active');
           processTitle.textContent = nextStep.title;
           processBodyOne.textContent = nextStep.bodyOne;
           processBodyTwo.textContent = nextStep.bodyTwo;
@@ -902,29 +1430,57 @@
         });
       });
 
-      const faqItems = Array.from(document.querySelectorAll(".faq-item"));
+      const faqItems = Array.from(document.querySelectorAll('.faq-item'));
       faqItems.forEach((item) => {
-        const button = item.querySelector(".faq-toggle");
-        const symbol = item.querySelector(".faq-symbol");
+        const button = item.querySelector('.faq-toggle');
+        const symbol = item.querySelector('.faq-symbol');
 
-        button.addEventListener("click", () => {
-          const willOpen = !item.classList.contains("is-open");
+        button.addEventListener('click', () => {
+          const willOpen = !item.classList.contains('is-open');
 
           faqItems.forEach((entry) => {
-            entry.classList.remove("is-open");
-            entry.querySelector(".faq-toggle").setAttribute("aria-expanded", "false");
-            entry.querySelector(".faq-symbol").textContent = "+";
+            entry.classList.remove('is-open');
+            entry.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+            entry.querySelector('.faq-symbol').textContent = '+';
           });
 
           if (willOpen) {
-            item.classList.add("is-open");
-            button.setAttribute("aria-expanded", "true");
-            symbol.textContent = "−";
+            item.classList.add('is-open');
+            button.setAttribute('aria-expanded', 'true');
+            symbol.textContent = '−';
           }
         });
       });
 
-      document.querySelector(".case-form").addEventListener("submit", (event) => {
+      const reveals = document.querySelectorAll('[data-reveal]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+      reveals.forEach((el) => observer.observe(el));
+
+      const spotlight = document.querySelector('.spotlight');
+      window.addEventListener('pointermove', (event) => {
+        spotlight.style.setProperty('--spot-x', `${event.clientX}px`);
+        spotlight.style.setProperty('--spot-y', `${event.clientY}px`);
+      });
+
+      const header = document.getElementById('header');
+      const parallaxCard = document.getElementById('parallax-card');
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        header.classList.toggle('scrolled', y > 18);
+        if (parallaxCard) {
+          parallaxCard.style.transform = `translateY(${Math.min(y * 0.04, 18)}px)`;
+        }
+      }, { passive: true });
+
+      document.querySelector('.case-form')?.addEventListener('submit', (event) => {
         event.preventDefault();
       });
     </script>
