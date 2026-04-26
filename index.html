@@ -6,7 +6,7 @@
     <title>Triangolo Crypto Recovery</title>
     <meta
       name="description"
-      content="Premium crypto recovery landing page for crypto.triangologastro.com."
+      content="Confidential crypto recovery support for theft, fraud, and compromised wallets."
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap");
@@ -17,7 +17,6 @@
         --panel: rgba(12, 16, 24, 0.72);
         --panel-strong: rgba(16, 20, 30, 0.94);
         --line: rgba(255, 255, 255, 0.08);
-        --line-strong: rgba(215, 185, 120, 0.22);
         --text: #f5f0e7;
         --muted: #a59e93;
         --soft: rgba(245, 240, 231, 0.3);
@@ -47,7 +46,7 @@
       }
 
       a { color: inherit; text-decoration: none; }
-      button, input, textarea { font: inherit; }
+      button, input, textarea, select { font: inherit; }
       .sr-only {
         position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
         overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
@@ -105,7 +104,6 @@
 
       .spotlight {
         background: radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 20%), rgba(255,255,255,0.08), transparent 18%);
-        transition: background-position 120ms linear;
       }
 
       .site-header,
@@ -237,14 +235,9 @@
       .hero {
         min-height: calc(100vh - 92px);
         display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(360px, 440px);
-        gap: 36px;
+        grid-template-columns: minmax(0, 1.05fr) minmax(390px, 470px);
+        gap: 42px;
         align-items: center;
-      }
-
-      .hero-copy {
-        position: relative;
-        padding-right: 10px;
       }
 
       .eyebrow {
@@ -324,13 +317,6 @@
         flex-wrap: wrap;
       }
 
-      .text-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 700;
-      }
-
       .hero-metrics {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -374,7 +360,7 @@
 
       .hero-stack {
         position: relative;
-        padding: 26px;
+        padding: 18px;
         border-radius: 34px;
         background: linear-gradient(180deg, rgba(13, 17, 25, 0.82), rgba(12, 16, 24, 0.96));
         border: 1px solid rgba(199, 169, 112, 0.18);
@@ -390,117 +376,92 @@
         pointer-events: none;
       }
 
-      .glass-stats {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-bottom: 16px;
-      }
-
-      .glass-chip {
-        padding: 14px 16px;
-        border-radius: 18px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .glass-chip b {
-        display: block;
-        color: var(--text);
-        margin-bottom: 4px;
-      }
-
-      .trace-graph {
-        position: relative;
-        height: 140px;
-        margin: 18px 0 22px;
-        border-radius: 24px;
-        background:
-          linear-gradient(180deg, rgba(255,255,255,0.02), transparent),
-          rgba(7, 10, 15, 0.7);
-        border: 1px solid rgba(255,255,255,0.06);
-        overflow: hidden;
-      }
-
-      .trace-graph svg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-      }
-
-      .trace-line {
-        stroke-dasharray: 520;
-        stroke-dashoffset: 520;
-        animation: draw-line 3.6s ease forwards 0.4s;
-      }
-
-      .trace-dot {
-        animation: pulse-dot 2.8s ease-in-out infinite;
-      }
-
-      .form-card-inner {
-        position: relative;
-        padding: 14px;
-        border-radius: 28px;
-        background: rgba(10, 13, 19, 0.6);
-        border: 1px solid rgba(255,255,255,0.05);
-      }
-
       .form-shell {
-        padding: 22px;
-        border-radius: 22px;
-        background: rgba(15, 20, 30, 0.88);
+        padding: 28px;
+        border-radius: 28px;
+        background: rgba(15, 20, 30, 0.92);
         border: 1px solid rgba(199, 169, 112, 0.16);
       }
 
-      .form-topline {
-        display: flex;
+      .form-badge {
+        display: inline-flex;
         align-items: center;
-        justify-content: space-between;
-        margin-bottom: 18px;
-        gap: 12px;
-      }
-
-      .form-topline span {
-        color: var(--gold);
-        font-size: 0.76rem;
-        letter-spacing: 0.18em;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(199, 169, 112, 0.08);
+        border: 1px solid rgba(199, 169, 112, 0.16);
+        color: var(--gold-bright);
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
       }
 
       .form-shell h2 {
-        margin: 0;
+        margin: 18px 0 10px;
         font-family: "Cormorant Garamond", serif;
-        font-size: 2.1rem;
+        font-size: 2.55rem;
         font-weight: 600;
+      }
+
+      .form-intro {
+        margin: 0 0 24px;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
       }
 
       .case-form {
         display: grid;
+        gap: 18px;
+      }
+
+      .form-section {
+        display: grid;
         gap: 12px;
+      }
+
+      .form-section-title {
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
       }
 
       .form-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
+        gap: 14px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.95rem;
+        color: rgba(245, 240, 231, 0.9);
+        font-weight: 600;
       }
 
       .case-form input,
-      .case-form textarea {
+      .case-form textarea,
+      .case-form select {
         width: 100%;
-        padding: 15px 16px;
-        border-radius: 14px;
+        min-height: 56px;
+        padding: 16px 18px;
+        border-radius: 16px;
         border: 1px solid rgba(199, 169, 112, 0.12);
-        background: rgba(10, 13, 19, 0.82);
+        background: rgba(10, 13, 19, 0.84);
         color: var(--text);
         outline: none;
         transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
       }
 
       .case-form input:focus,
-      .case-form textarea:focus {
+      .case-form textarea:focus,
+      .case-form select:focus {
         border-color: rgba(236, 209, 157, 0.54);
         transform: translateY(-1px);
         box-shadow: 0 0 0 4px rgba(199, 169, 112, 0.08);
@@ -512,14 +473,41 @@
       }
 
       .case-form textarea {
+        min-height: 156px;
         resize: vertical;
-        min-height: 126px;
+      }
+
+      .form-helper-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .helper-card {
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .helper-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--text);
+        font-size: 0.94rem;
+      }
+
+      .helper-card span {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.55;
       }
 
       .tiny-note {
-        margin: 10px 0 0;
-        font-size: 0.83rem;
-        color: rgba(245, 240, 231, 0.5);
+        margin: 0;
+        font-size: 0.86rem;
+        color: rgba(245, 240, 231, 0.55);
+        line-height: 1.6;
       }
 
       .section-heading {
@@ -573,10 +561,7 @@
       }
 
       .feature-card:hover::before { opacity: 1; }
-
-      .feature-card-highlight {
-        border-color: rgba(199, 169, 112, 0.36);
-      }
+      .feature-card-highlight { border-color: rgba(199, 169, 112, 0.36); }
 
       .icon-wrap {
         width: 58px;
@@ -609,36 +594,6 @@
         margin: 0;
         font-size: 1.02rem;
       }
-
-      .story-strip {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 18px;
-        margin-top: 22px;
-      }
-
-      .story-card {
-        padding: 22px;
-        border-radius: 24px;
-        background: rgba(12, 16, 24, 0.68);
-        border: 1px solid rgba(255,255,255,0.06);
-      }
-
-      .story-card h3 {
-        margin: 0 0 12px;
-        font-size: 1.2rem;
-      }
-
-      .story-stat {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 14px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-      }
-
-      .story-stat:last-child { border-bottom: 0; }
-      .story-stat strong { color: var(--gold-bright); }
 
       .process .section-heading {
         margin-inline: 0;
@@ -685,9 +640,7 @@
         align-items: center;
       }
 
-      .detail-copy {
-        padding: 6px 0;
-      }
+      .detail-copy { padding: 6px 0; }
 
       .step-icon {
         width: 50px;
@@ -741,9 +694,7 @@
         border: 1px dashed rgba(255,255,255,0.08);
       }
 
-      .orb-ring::after {
-        inset: 42px;
-      }
+      .orb-ring::after { inset: 42px; }
 
       .orb-core {
         inset: 56px;
@@ -771,10 +722,7 @@
         background: #120f11;
       }
 
-      .faq-list {
-        display: grid;
-        gap: 14px;
-      }
+      .faq-list { display: grid; gap: 14px; }
 
       .faq-item {
         border-radius: 24px;
@@ -823,13 +771,8 @@
         font-size: 1.06rem;
       }
 
-      .faq-item.is-open .faq-answer {
-        grid-template-rows: 1fr;
-      }
-
-      .faq-item.is-open .faq-answer p {
-        padding-bottom: 24px;
-      }
+      .faq-item.is-open .faq-answer { grid-template-rows: 1fr; }
+      .faq-item.is-open .faq-answer p { padding-bottom: 24px; }
 
       .cta-panel {
         position: relative;
@@ -885,9 +828,7 @@
         background: linear-gradient(90deg, transparent, rgba(199, 169, 112, 0.34), transparent);
       }
 
-      .site-footer p {
-        margin: 10px 0;
-      }
+      .site-footer p { margin: 10px 0; }
 
       .footer-links {
         display: inline-flex;
@@ -909,17 +850,9 @@
         transform: translateY(0) scale(1);
       }
 
-      [data-reveal="left"] {
-        transform: translateX(-42px);
-      }
-
-      [data-reveal="right"] {
-        transform: translateX(42px);
-      }
-
-      [data-reveal="zoom"] {
-        transform: scale(0.92);
-      }
+      [data-reveal="left"] { transform: translateX(-42px); }
+      [data-reveal="right"] { transform: translateX(42px); }
+      [data-reveal="zoom"] { transform: scale(0.92); }
 
       [data-reveal="left"].in-view,
       [data-reveal="right"].in-view,
@@ -935,15 +868,6 @@
       @keyframes pulse-bar {
         0%, 100% { transform: scaleX(0.98); opacity: 0.88; }
         50% { transform: scaleX(1.02); opacity: 1; }
-      }
-
-      @keyframes draw-line {
-        to { stroke-dashoffset: 0; }
-      }
-
-      @keyframes pulse-dot {
-        0%, 100% { transform: scale(1); opacity: 0.9; }
-        50% { transform: scale(1.16); opacity: 1; }
       }
 
       @keyframes rotate-slow {
@@ -973,86 +897,32 @@
       }
 
       @media (max-width: 1080px) {
-        .site-header {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .hero,
-        .story-strip,
-        .detail-panel {
-          grid-template-columns: 1fr;
-        }
-
-        .benefit-grid,
-        .process-tabs,
-        .hero-metrics {
-          grid-template-columns: 1fr;
-        }
-
-        .hero {
-          min-height: auto;
-          padding-top: 20px;
-        }
-
-        .hero-stack {
-          max-width: 620px;
-          margin: 0 auto;
-        }
+        .site-header { flex-wrap: wrap; justify-content: center; }
+        .hero, .detail-panel { grid-template-columns: 1fr; }
+        .benefit-grid, .process-tabs, .hero-metrics, .form-helper-grid { grid-template-columns: 1fr; }
+        .hero { min-height: auto; padding-top: 20px; }
+        .hero-stack { max-width: 640px; margin: 0 auto; }
       }
 
       @media (max-width: 780px) {
-        .site-header,
-        main {
-          width: min(calc(100% - 26px), var(--max));
-        }
-
+        .site-header, main { width: min(calc(100% - 26px), var(--max)); }
         .site-nav {
           flex-wrap: wrap;
           justify-content: center;
           gap: 18px;
           letter-spacing: 0.16em;
         }
-
-        .brand-domain {
-          letter-spacing: 0.12em;
-        }
-
-        .hero h1 {
-          font-size: clamp(3rem, 16vw, 4.9rem);
-        }
-
+        .hero h1 { font-size: clamp(3rem, 16vw, 4.9rem); }
         .hero-text,
         .section-heading p:last-child,
         .feature-card p,
         .detail-copy p,
         .faq-answer p,
-        .cta-panel p {
-          font-size: 1rem;
-        }
-
-        .form-row,
-        .glass-stats {
-          grid-template-columns: 1fr;
-        }
-
-        .feature-card,
-        .cta-panel,
-        .hero-stack {
-          padding-inline: 20px;
-        }
-
-        .process-tab span,
-        .faq-toggle,
-        .detail-copy h3,
-        .feature-card h3 {
-          font-size: 1.35rem;
-        }
-
-        .orb-stage {
-          width: 180px;
-          height: 180px;
-        }
+        .cta-panel p { font-size: 1rem; }
+        .form-row { grid-template-columns: 1fr; }
+        .hero-stack, .form-shell, .feature-card, .cta-panel { padding-inline: 20px; }
+        .process-tab span, .faq-toggle, .detail-copy h3, .feature-card h3 { font-size: 1.35rem; }
+        .orb-stage { width: 180px; height: 180px; }
       }
     </style>
   </head>
@@ -1083,11 +953,11 @@
 
       <main id="top">
         <section class="hero">
-          <div class="hero-copy" data-reveal="left">
+          <div data-reveal="left">
             <div class="eyebrow">
-              <strong>Private recovery desk</strong>
+              <strong>Confidential recovery support</strong>
               <span class="eyebrow-divider"></span>
-              <span>Trusted digital asset intelligence</span>
+              <span>Structured digital asset case review</span>
             </div>
 
             <h1>
@@ -1097,7 +967,7 @@
             </h1>
 
             <p class="hero-text">
-              Triangolo Crypto blends forensic tracing, discreet client handling, and premium case presentation to help victims of wallet compromise, fraudulent platforms, and cross-chain theft move forward with clarity.
+              Triangolo Crypto supports individuals affected by wallet compromise, fraudulent trading platforms, phishing, and suspicious transfers with discreet case handling and clear next-step guidance.
             </p>
 
             <div class="hero-actions">
@@ -1107,99 +977,86 @@
 
             <div class="hero-metrics">
               <article class="metric-card" data-reveal style="--delay: 80ms">
-                <strong>10+ years</strong>
-                <span>investigative experience</span>
+                <strong>Discreet intake</strong>
+                <span>Private, case-by-case review</span>
               </article>
               <article class="metric-card" data-reveal style="--delay: 160ms">
-                <strong>120+ chains</strong>
-                <span>cross-network visibility</span>
+                <strong>Cross-chain tracing</strong>
+                <span>Multi-platform investigative workflow</span>
               </article>
               <article class="metric-card" data-reveal style="--delay: 240ms">
-                <strong>Private</strong>
-                <span>case-by-case engagement</span>
+                <strong>Clear guidance</strong>
+                <span>Structured next steps from the outset</span>
               </article>
             </div>
           </div>
 
           <div class="hero-visual" data-reveal="right">
             <div class="hero-stack" id="parallax-card">
-              <div class="glass-stats">
-                <div class="glass-chip">
-                  <b>Case signal</b>
-                  <span>High confidence trace path detected</span>
-                </div>
-                <div class="glass-chip">
-                  <b>Jurisdiction</b>
-                  <span>UK-led intake with global reach</span>
-                </div>
-              </div>
+              <div class="form-shell" id="contact">
+                <div class="form-badge">Submit a Case Report</div>
+                <h2>Tell us what happened</h2>
+                <p class="form-intro">
+                  Share the key details of your case and our team will review the information to assess the most appropriate next steps.
+                </p>
 
-              <div class="trace-graph" aria-hidden="true">
-                <svg viewBox="0 0 420 160" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="traceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#89c6b7" />
-                      <stop offset="100%" stop-color="#ecd19d" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0 106 C50 100, 78 118, 116 94 S192 40, 234 70 S296 134, 354 82 S398 36, 420 48" fill="none" stroke="url(#traceGradient)" stroke-width="4" class="trace-line" />
-                  <circle cx="116" cy="94" r="5" fill="#ecd19d" class="trace-dot" />
-                  <circle cx="234" cy="70" r="5" fill="#89c6b7" class="trace-dot" style="animation-delay: .4s" />
-                  <circle cx="354" cy="82" r="5" fill="#ecd19d" class="trace-dot" style="animation-delay: .8s" />
-                </svg>
-              </div>
-
-              <div class="form-card-inner" id="contact">
-                <div class="form-shell">
-                  <div class="form-topline">
-                    <span>Confidential intake</span>
-                    <span>Response-led</span>
+                <form class="case-form">
+                  <div class="form-section">
+                    <div class="form-section-title">Your details</div>
+                    <div class="form-row">
+                      <div class="field">
+                        <label for="firstName">First name</label>
+                        <input id="firstName" type="text" placeholder="Enter your first name" />
+                      </div>
+                      <div class="field">
+                        <label for="lastName">Last name</label>
+                        <input id="lastName" type="text" placeholder="Enter your last name" />
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="field">
+                        <label for="email">Email address</label>
+                        <input id="email" type="email" placeholder="name@example.com" />
+                      </div>
+                      <div class="field">
+                        <label for="phone">Phone number</label>
+                        <input id="phone" type="tel" placeholder="Enter your phone number" />
+                      </div>
+                    </div>
                   </div>
-                  <h2>Submit a Case Report</h2>
 
-                  <form class="case-form">
+                  <div class="form-section">
+                    <div class="form-section-title">Case information</div>
                     <div class="form-row">
-                      <label>
-                        <span class="sr-only">First Name</span>
-                        <input type="text" placeholder="First Name" />
-                      </label>
-                      <label>
-                        <span class="sr-only">Last Name</span>
-                        <input type="text" placeholder="Last Name" />
-                      </label>
+                      <div class="field">
+                        <label for="amount">Estimated amount lost</label>
+                        <input id="amount" type="text" placeholder="For example: $25,000" />
+                      </div>
+                      <div class="field">
+                        <label for="assetType">Asset type</label>
+                        <input id="assetType" type="text" placeholder="BTC, ETH, USDT, mixed assets" />
+                      </div>
                     </div>
-
-                    <label>
-                      <span class="sr-only">Email Address</span>
-                      <input type="email" placeholder="Email Address" />
-                    </label>
-
-                    <label>
-                      <span class="sr-only">Phone Number</span>
-                      <input type="tel" placeholder="Phone Number" />
-                    </label>
-
-                    <div class="form-row">
-                      <label>
-                        <span class="sr-only">Amount Lost</span>
-                        <input type="text" placeholder="Amount Lost ($)" />
-                      </label>
-                      <label>
-                        <span class="sr-only">Asset Type</span>
-                        <input type="text" placeholder="Asset Type" />
-                      </label>
+                    <div class="field">
+                      <label for="details">Incident summary</label>
+                      <textarea id="details" rows="6" placeholder="Describe what happened, when it happened, and which platform or wallet was involved"></textarea>
                     </div>
+                  </div>
 
-                    <label>
-                      <span class="sr-only">Incident Details</span>
-                      <textarea rows="5" placeholder="Tell us what happened"></textarea>
-                    </label>
+                  <div class="form-helper-grid">
+                    <div class="helper-card">
+                      <strong>What to include</strong>
+                      <span>Dates, wallet addresses, exchange names, transaction hashes, and any correspondence you have.</span>
+                    </div>
+                    <div class="helper-card">
+                      <strong>What happens next</strong>
+                      <span>Your submission is reviewed and used to determine the most relevant investigative starting point.</span>
+                    </div>
+                  </div>
 
-                    <button class="button button-gold" type="submit">Begin Review</button>
-                  </form>
-
-                  <p class="tiny-note">Every submission is reviewed discreetly and handled with a tailored response path.</p>
-                </div>
+                  <button class="button button-gold" type="submit">Begin confidential review</button>
+                  <p class="tiny-note">Only include information that is relevant to your case. Avoid sharing sensitive account credentials or seed phrases.</p>
+                </form>
               </div>
             </div>
           </div>
@@ -1207,13 +1064,13 @@
 
         <section id="about">
           <div class="section-heading" data-reveal>
-            <p class="section-kicker">Premium recovery experience</p>
+            <p class="section-kicker">A clear recovery path</p>
             <h2>
-              Built for clients who need
-              <span>clarity, discretion, and momentum.</span>
+              Support designed to bring
+              <span>clarity to difficult situations.</span>
             </h2>
             <p>
-              This isn’t a generic lead page. It is designed to feel deliberate, intelligent, and composed from the first scroll, mirroring the seriousness of the cases it represents.
+              From the first report through to deeper investigation, every stage is structured to keep your case organised, understandable, and handled with care.
             </p>
           </div>
 
@@ -1222,46 +1079,25 @@
               <div class="icon-wrap">
                 <svg viewBox="0 0 24 24"><path d="M4 7.5h16M6 4.5h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Zm4 14h4"/></svg>
               </div>
-              <h3>Structured Intake</h3>
-              <p>Fast capture of the facts that matter, with a tone that feels calm and premium rather than urgent and noisy.</p>
+              <h3>Structured intake</h3>
+              <p>Your case details are gathered in a format that makes the next stage of review faster and more useful.</p>
             </article>
 
             <article class="feature-card feature-card-highlight" data-reveal style="--delay: 120ms">
               <div class="icon-wrap">
                 <svg viewBox="0 0 24 24"><path d="M7 8h10l-1 11H8L7 8Zm2-3h6l1 3H8l1-3Zm2 6v4m2-4v4"/></svg>
               </div>
-              <h3>Tracing Depth</h3>
-              <p>Cross-wallet movement, exchange exposure, and chain-level clues surfaced in a way that feels rigorous and high trust.</p>
+              <h3>Investigative tracing</h3>
+              <p>Transaction flow, wallet activity, and platform exposure are reviewed to identify practical recovery routes.</p>
             </article>
 
             <article class="feature-card" data-reveal style="--delay: 240ms">
               <div class="icon-wrap">
                 <svg viewBox="0 0 24 24"><path d="M5 18h14M7 16V9m5 7V6m5 10v-4"/></svg>
               </div>
-              <h3>Transparent Guidance</h3>
-              <p>Premium clients expect signal over spin. The design and the copy both reflect that standard.</p>
+              <h3>Clear communication</h3>
+              <p>You receive a more structured view of the case, the likely process, and the most important next steps.</p>
             </article>
-          </div>
-
-          <div class="story-strip">
-            <div class="story-card" data-reveal="left">
-              <h3>Why this version feels stronger</h3>
-              <p>The original reference relies on a fairly standard dark theme with bright pink accents. This version shifts toward obsidian, champagne, and sea-glass tones, which reads more expensive and less promotional while still feeling modern.</p>
-            </div>
-            <div class="story-card" data-reveal="right">
-              <div class="story-stat">
-                <span>Visual direction</span>
-                <strong>Luxury forensic</strong>
-              </div>
-              <div class="story-stat">
-                <span>Animation language</span>
-                <strong>Slow, precise, layered</strong>
-              </div>
-              <div class="story-stat">
-                <span>Brand surface</span>
-                <strong>crypto.triangologastro.com</strong>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -1295,8 +1131,8 @@
                 <svg viewBox="0 0 24 24" id="process-icon"><path d="m4 20 5-1 10-10-4-4L5 15l-1 5Zm9-13 4 4"/></svg>
               </div>
               <h3 id="process-title">Case Submission</h3>
-              <p id="process-body-one">Every strong recovery effort starts with a clean factual base. We gather wallet details, asset types, platform touchpoints, and incident context in a way that reduces noise and improves investigative precision.</p>
-              <p id="process-body-two">This design mirrors that philosophy by turning the journey into a clear, premium sequence instead of a cluttered funnel.</p>
+              <p id="process-body-one">The first stage focuses on building a reliable factual base. Wallet details, platform names, dates, asset types, and the overall sequence of events are gathered to support a stronger review.</p>
+              <p id="process-body-two">A clearer intake typically leads to a more focused investigation and fewer delays at the start of the process.</p>
               <a class="button button-outline" href="#contact">Start your recovery</a>
             </div>
 
@@ -1313,7 +1149,7 @@
             <p class="section-kicker">FAQ</p>
             <h2>
               Common questions,
-              <span>beautifully resolved.</span>
+              <span>clearly answered.</span>
             </h2>
           </div>
 
@@ -1324,7 +1160,7 @@
                 <span class="faq-symbol">−</span>
               </button>
               <div class="faq-answer">
-                <p>In many cases, yes. Recovery depends on how the funds moved, which platforms touched the assets, and whether meaningful trace points remain. The goal is to identify realistic leverage rather than make blanket promises.</p>
+                <p>In some cases, yes. The likelihood depends on how the funds moved, which platforms were involved, and whether meaningful trace points remain available for review.</p>
               </div>
             </article>
 
@@ -1334,7 +1170,7 @@
                 <span class="faq-symbol">+</span>
               </button>
               <div class="faq-answer">
-                <p>Some traces can be scoped quickly, while multi-platform or cross-chain incidents may take longer. The right expectation is a staged process with clearer signal over time, not an instant answer.</p>
+                <p>Some traces can be scoped quickly, while more complex multi-platform or cross-chain cases may require a longer review period. Each case depends on the available information and the movement of the assets.</p>
               </div>
             </article>
 
@@ -1344,7 +1180,7 @@
                 <span class="faq-symbol">+</span>
               </button>
               <div class="faq-answer">
-                <p>Wallet compromise, fraudulent exchanges, fake investment platforms, phishing, social engineering, and suspicious transfer chains are all common categories for review.</p>
+                <p>Cases can include wallet compromise, fraudulent exchanges, phishing, fake investment platforms, social engineering, and suspicious transfer activity.</p>
               </div>
             </article>
 
@@ -1354,7 +1190,7 @@
                 <span class="faq-symbol">+</span>
               </button>
               <div class="faq-answer">
-                <p>Yes. The brand direction and case flow are both designed around discretion. Sensitive details should only be handled where they are genuinely relevant to review and escalation.</p>
+                <p>Confidentiality is central to the intake process. Submissions are intended to support case assessment and should focus on relevant facts rather than sensitive login credentials.</p>
               </div>
             </article>
           </div>
@@ -1368,7 +1204,7 @@
               <span>Start your case with confidence.</span>
             </h2>
             <p>
-              This updated version turns the site into a stronger brand surface for `crypto.triangologastro.com`, with motion and visual polish that feel measured, premium, and trustworthy.
+              Submit the details of your case and take the first step toward a clearer, more structured review of what happened.
             </p>
             <a class="button button-gold" href="#contact">Open your case</a>
           </div>
@@ -1395,20 +1231,20 @@
         {
           title: "Case Submission",
           icon: '<path d="m4 20 5-1 10-10-4-4L5 15l-1 5Zm9-13 4 4"/>',
-          bodyOne: "Every strong recovery effort starts with a clean factual base. We gather wallet details, asset types, platform touchpoints, and incident context in a way that reduces noise and improves investigative precision.",
-          bodyTwo: "This design mirrors that philosophy by turning the journey into a clear, premium sequence instead of a cluttered funnel."
+          bodyOne: "The first stage focuses on building a reliable factual base. Wallet details, platform names, dates, asset types, and the overall sequence of events are gathered to support a stronger review.",
+          bodyTwo: "A clearer intake typically leads to a more focused investigation and fewer delays at the start of the process."
         },
         {
           title: "Investigation & Tracing",
           icon: '<path d="M4 12h5l2-5 3 10 2-5h4"/>',
-          bodyOne: "Once the case is scoped, tracing begins across wallets, bridges, exchanges, and visible interaction patterns. The goal is to separate noise from signal and build a more usable evidentiary picture.",
-          bodyTwo: "The new motion system reinforces that sense of progression as the page unfolds with deliberate, layered reveals."
+          bodyOne: "Once the case is scoped, tracing begins across wallets, exchanges, bridges, and visible transaction patterns. The purpose is to identify useful signals and narrow the path forward.",
+          bodyTwo: "This stage helps separate what is actionable from what is simply noise, giving the case more structure and direction."
         },
         {
           title: "Recovery Strategy",
           icon: '<path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/>',
-          bodyOne: "The final phase turns findings into action: documented next steps, practical escalation routes, and a clearer view of what may realistically be recovered or pursued.",
-          bodyTwo: "Premium presentation matters here because trust is shaped as much by clarity and restraint as it is by technical depth."
+          bodyOne: "The final stage translates the findings into practical next steps, including the most relevant avenues for escalation, follow-up, and case progression.",
+          bodyTwo: "The goal is a clearer understanding of what may be possible and what the next stage of action should look like."
         }
       ];
 
@@ -1476,7 +1312,7 @@
         const y = window.scrollY;
         header.classList.toggle('scrolled', y > 18);
         if (parallaxCard) {
-          parallaxCard.style.transform = `translateY(${Math.min(y * 0.04, 18)}px)`;
+          parallaxCard.style.transform = `translateY(${Math.min(y * 0.035, 14)}px)`;
         }
       }, { passive: true });
 
