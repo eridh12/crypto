@@ -1,0 +1,35 @@
+<svg width="280" height="72" viewBox="0 0 280 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cc-core" x1="16" y1="12" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2E4D5"/>
+      <stop offset="0.52" stop-color="#CF8F5C"/>
+      <stop offset="1" stop-color="#A2385C"/>
+    </linearGradient>
+    <linearGradient id="cc-stroke" x1="0" y1="0" x2="280" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2E4D5"/>
+      <stop offset="0.45" stop-color="#CF8F5C"/>
+      <stop offset="1" stop-color="#9A2E54"/>
+    </linearGradient>
+  </defs>
+
+  <g>
+    <rect x="4" y="8" width="56" height="56" rx="18" fill="#120D12" stroke="url(#cc-stroke)" stroke-width="1.4"/>
+    <path d="M20 21.5L32 15L44 21.5V29.5C44 40.5 37.2 48.2 32 51C26.8 48.2 20 40.5 20 29.5V21.5Z" fill="url(#cc-core)" fill-opacity="0.18" stroke="url(#cc-stroke)" stroke-width="1.3"/>
+    <path d="M38.5 24.5C36.9 22.2 34.3 20.8 31.3 20.8C25.9 20.8 22 25 22 30.4C22 35.8 25.9 40 31.3 40C34.3 40 36.9 38.6 38.5 36.3" stroke="#F2E4D5" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M30 11.5L32 8L34 11.5" stroke="#CF8F5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="32" cy="8" r="2.2" fill="#F2E4D5"/>
+  </g>
+
+  <g fill="#F6EFE8">
+    <path d="M83.818 28.112C83.818 19.56 90.49 13.32 99.258 13.32C104.778 13.32 109.074 15.696 111.954 19.632L107.442 22.944C105.714 20.568 102.834 19.128 99.258 19.128C93.946 19.128 89.986 23.016 89.986 28.112C89.986 33.208 93.946 37.096 99.258 37.096C102.834 37.096 105.714 35.656 107.442 33.28L111.954 36.592C109.074 40.528 104.778 42.904 99.258 42.904C90.49 42.904 83.818 36.664 83.818 28.112Z"/>
+    <path d="M116.592 42.4V13.824H122.4V24.408H134.208V13.824H140.016V42.4H134.208V29.568H122.4V42.4H116.592Z"/>
+    <path d="M145.748 42.4V13.824H166.12V18.768H151.556V25.416H164.46V30.216H151.556V37.456H166.624V42.4H145.748Z"/>
+    <path d="M171.158 42.4V13.824H176.966V37.384H191.53V42.4H171.158Z"/>
+    <path d="M195.452 42.4V13.824H201.26V42.4H195.452Z"/>
+    <path d="M207.487 42.4V13.824H221.907C227.139 13.824 230.811 17.208 230.811 22.016C230.811 25.16 229.155 27.824 226.347 29.048C229.803 30.128 231.891 32.936 231.891 36.608C231.891 41.704 227.931 42.4 223.419 42.4H207.487ZM213.295 25.704H220.827C223.059 25.704 224.859 24.696 224.859 22.752C224.859 20.52 223.059 19.488 220.755 19.488H213.295V25.704ZM213.295 37.24H222.411C225.003 37.24 226.083 35.8 226.083 33.928C226.083 31.984 224.715 30.504 221.979 30.504H213.295V37.24Z"/>
+    <path d="M236.364 42.4V13.824H256.736V18.768H242.172V25.416H255.076V30.216H242.172V37.456H257.24V42.4H236.364Z"/>
+  </g>
+
+  <path d="M84 55.5H257" stroke="url(#cc-stroke)" stroke-opacity="0.6" stroke-width="1.2" stroke-linecap="round"/>
+  <text x="84" y="65" fill="#B7AAA3" font-family="Manrope, Arial, sans-serif" font-size="9.8" letter-spacing="3.8">TECHNOLOGY</text>
+</svg>
